@@ -16,6 +16,7 @@ dependencies:
 
   mobx: ^2.0.1
   flutter_mobx: ^2.0.0
+  dio: ^4.0.0
   cached_network_image:
   md2_tab_indicator:
   provider:
