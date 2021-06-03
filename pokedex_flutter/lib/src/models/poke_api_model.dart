@@ -99,8 +99,8 @@ class Pokemon {
 }
 
 class NextEvolution {
-  String? num;
-  String? name;
+  late String num;
+  late String name;
 
   NextEvolution({required this.num, required this.name});
 
@@ -118,8 +118,8 @@ class NextEvolution {
 }
 
 class PrevEvolution {
-  String? num;
-  String? name;
+  late String num;
+  late String name;
 
   PrevEvolution({required this.num, required this.name});
 
