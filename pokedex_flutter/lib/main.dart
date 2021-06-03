@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:pokedex/src/stores/pokeapi_store.dart';
 
 import 'src/module/home/home_page.dart';
 
 void main() {
+  GetIt getIt = GetIt.instance;
+  getIt.registerSingleton<PokeApiStore>(PokeApiStore());
   runApp(MyApp());
 }
 
