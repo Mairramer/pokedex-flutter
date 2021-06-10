@@ -12,13 +12,13 @@ mixin _$PokeApiV2Store on _PokeApiV2StoreBase, Store {
   final _$specieAtom = Atom(name: '_PokeApiV2StoreBase.specie');
 
   @override
-  Specie? get specie {
+  Specie get specie {
     _$specieAtom.reportRead();
     return super.specie;
   }
 
   @override
-  set specie(Specie? value) {
+  set specie(Specie value) {
     _$specieAtom.reportWrite(value, super.specie, () {
       super.specie = value;
     });

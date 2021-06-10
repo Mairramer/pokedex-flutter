@@ -13,16 +13,16 @@ class PokeApiV2Store = _PokeApiV2StoreBase with _$PokeApiV2Store;
 
 abstract class _PokeApiV2StoreBase with Store {
   @observable
-  Specie? specie;
+  Specie specie;
 
   @observable
-  late PokeApiV2 pokeApiV2;
+  PokeApiV2 pokeApiV2;
 
   @action
   Future<void> getInfoPokemon(String nome) async {
-    var _url = Uri.parse(ConstsApi.pokeapiv2URL + nome.toLowerCase());
     try {
-      final response = await http.get(_url);
+      var url = Uri.parse(ConstsApi.pokeapiv2URL + nome.toLowerCase());
+      final response = await http.get(url);
       var decodeJson = jsonDecode(response.body);
       pokeApiV2 = PokeApiV2.fromJson(decodeJson);
     } catch (error, stacktrace) {
@@ -33,10 +33,11 @@ abstract class _PokeApiV2StoreBase with Store {
 
   @action
   Future<void> getInfoSpecie(String numPokemon) async {
-    var _url = Uri.parse(ConstsApi.pokeapiv2EspeciesURL + numPokemon);
     try {
+      var url =
+          Uri.parse(ConstsApi.pokeapiv2EspeciesURL + numPokemon.toLowerCase());
       specie = null;
-      final response = await http.get(_url);
+      final response = await http.get(url);
       var decodeJson = jsonDecode(response.body);
       var _specie = Specie.fromJson(decodeJson);
       specie = _specie;

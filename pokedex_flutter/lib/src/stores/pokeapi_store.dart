@@ -13,22 +13,22 @@ class PokeApiStore = _PokeApiStoreBase with _$PokeApiStore;
 
 abstract class _PokeApiStoreBase with Store {
   @observable
-  PokeApi? _pokeApi;
+  PokeApi _pokeApi;
 
   @observable
-  Pokemon? _pokemonAtual;
+  Pokemon _pokemonAtual;
 
   @observable
   dynamic corPokemon;
 
   @observable
-  int? posicaoAtual;
+  int posicaoAtual;
 
   @computed
-  PokeApi? get pokeAPI => _pokeApi;
+  PokeApi get pokeAPI => _pokeApi;
 
   @computed
-  Pokemon? get pokemonAtual => _pokemonAtual;
+  Pokemon get pokemonAtual => _pokemonAtual;
 
   @action
   fetchPokemonList() {
@@ -38,19 +38,19 @@ abstract class _PokeApiStoreBase with Store {
     });
   }
 
-  Pokemon getPokemon({required int index}) {
-    return _pokeApi!.pokemon[index];
+  Pokemon getPokemon({int index}) {
+    return _pokeApi.pokemon[index];
   }
 
   @action
-  setPokemonAtual({required int index}) {
-    _pokemonAtual = _pokeApi!.pokemon[index];
-    corPokemon = ConstsColors.getColorType(type: _pokemonAtual!.type[0]);
+  setPokemonAtual({int index}) {
+    _pokemonAtual = _pokeApi.pokemon[index];
+    corPokemon = ConstsColors.getColorType(type: _pokemonAtual.type[0]);
     posicaoAtual = index;
   }
 
   @action
-  Widget getImage({required String numero}) {
+  Widget getImage({String numero}) {
     return CachedNetworkImage(
       placeholder: (context, url) => new Container(
         color: Colors.transparent,
@@ -60,7 +60,7 @@ abstract class _PokeApiStoreBase with Store {
     );
   }
 
-  Future<PokeApi?> loadPokeAPI() async {
+  Future<PokeApi> loadPokeAPI() async {
     var url = Uri.parse(ConstsApi.pokeapiURL);
     try {
       final response = await http.get(url);

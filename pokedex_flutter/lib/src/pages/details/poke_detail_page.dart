@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -13,21 +14,21 @@ import 'package:sliding_sheet/sliding_sheet.dart';
 
 class PokeDetailPage extends StatefulWidget {
   final int index;
-  PokeDetailPage({Key? key, required this.index}) : super(key: key);
+  PokeDetailPage({Key key, this.index}) : super(key: key);
 
   @override
   _PokeDetailPageState createState() => _PokeDetailPageState();
 }
 
 class _PokeDetailPageState extends State<PokeDetailPage> {
-  late PageController _pageController;
-  late PokeApiStore _pokemonStore;
-  late PokeApiV2Store _pokeApiV2Store;
-  late MultiTrackTween _animation;
-  late double _progress;
-  late double _multiple;
-  late double _opacity;
-  late double _opacityTitleAppBar;
+  PageController _pageController;
+  PokeApiStore _pokemonStore;
+  PokeApiV2Store _pokeApiV2Store;
+  MultiTrackTween _animation;
+  double _progress;
+  double _multiple;
+  double _opacity;
+  double _opacityTitleAppBar;
 
   @override
   void initState() {
@@ -36,8 +37,8 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
         PageController(initialPage: widget.index, viewportFraction: 0.5);
     _pokemonStore = GetIt.instance<PokeApiStore>();
     _pokeApiV2Store = GetIt.instance<PokeApiV2Store>();
-    _pokeApiV2Store.getInfoPokemon(_pokemonStore.pokemonAtual!.name);
-    _pokeApiV2Store.getInfoSpecie(_pokemonStore.pokemonAtual!.id.toString());
+    _pokeApiV2Store.getInfoPokemon(_pokemonStore.pokemonAtual.name);
+    _pokeApiV2Store.getInfoSpecie(_pokemonStore.pokemonAtual.id.toString());
     _animation = MultiTrackTween([
       Track("rotation").add(Duration(seconds: 5), Tween(begin: 0.0, end: 6.0),
           curve: Curves.linear)
@@ -106,7 +107,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                           ? 0.2
                                           : 0.0,
                                     ),
-                                    angle: animation['rotation'],
+                                    angle: animation['rotate'],
                                   );
                                 }),
                             IconButton(
@@ -127,7 +128,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                           _progress *
                               (MediaQuery.of(context).size.height * 0.060),
                       child: Text(
-                        _pokemonStore.pokemonAtual!.name,
+                        _pokemonStore.pokemonAtual.name,
                         style: TextStyle(
                             fontFamily: 'Google',
                             fontSize: 38 -
@@ -148,10 +149,9 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              setTipos(_pokemonStore.pokemonAtual!.type),
+                              setTipos(_pokemonStore.pokemonAtual.type),
                               Text(
-                                '#' +
-                                    _pokemonStore.pokemonAtual!.num.toString(),
+                                '#' + _pokemonStore.pokemonAtual.num.toString(),
                                 style: TextStyle(
                                     fontFamily: 'Google',
                                     fontSize: 26,
@@ -204,11 +204,11 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                   onPageChanged: (index) {
                     _pokemonStore.setPokemonAtual(index: index);
                     _pokeApiV2Store
-                        .getInfoPokemon(_pokemonStore.pokemonAtual!.name);
+                        .getInfoPokemon(_pokemonStore.pokemonAtual.name);
                     _pokeApiV2Store.getInfoSpecie(
-                        _pokemonStore.pokemonAtual!.id.toString());
+                        _pokemonStore.pokemonAtual.id.toString());
                   },
-                  itemCount: _pokemonStore.pokeAPI!.pokemon.length,
+                  itemCount: _pokemonStore.pokeAPI.pokemon.length,
                   itemBuilder: (BuildContext context, int index) {
                     Pokemon _pokeitem = _pokemonStore.getPokemon(index: index);
                     return Stack(
@@ -231,7 +231,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                       : 0,
                                   duration: Duration(milliseconds: 200),
                                 ),
-                                angle: animation['rotation'],
+                                angle: animation['rotate'],
                               );
                             }),
                         IgnorePointer(

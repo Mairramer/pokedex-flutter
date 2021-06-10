@@ -30,12 +30,12 @@ class TabEvolutionWidget extends StatelessWidget {
       _list.add(Icon(Icons.keyboard_arrow_down));
     });
     _list.add(resizePokemon(
-        _pokeApiStore.getImage(numero: _pokeApiStore.pokemonAtual!.num)));
+        _pokeApiStore.getImage(numero: _pokeApiStore.pokemonAtual.num)));
     _list.add(
       Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: Text(
-          _pokeApiStore.pokemonAtual!.name,
+          _pokeApiStore.pokemonAtual.name,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -73,11 +73,11 @@ class TabEvolutionWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: Observer(builder: (context) {
-          Pokemon? pokemon = _pokeApiStore.pokemonAtual;
+          Pokemon pokemon = _pokeApiStore.pokemonAtual;
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: getEvolucao(pokemon!),
+              children: getEvolucao(pokemon),
             ),
           );
         }),

@@ -1,7 +1,7 @@
 class PokeApi {
-  late List<Pokemon> pokemon;
+  List<Pokemon> pokemon;
 
-  PokeApi({required this.pokemon});
+  PokeApi({this.pokemon});
 
   PokeApi.fromJson(Map<String, dynamic> json) {
     if (json['pokemon'] != null) {
@@ -20,41 +20,41 @@ class PokeApi {
 }
 
 class Pokemon {
-  late int id;
-  late String num;
-  late String name;
-  late String img;
-  late List<String> type;
-  late String height;
-  late String weight;
-  late String candy;
-  late int candyCount;
-  late String egg;
-  late double spawnChance;
-  late double avgSpawns;
-  late String spawnTime;
-  late List<double> multipliers;
-  late List<String> weaknesses;
-  late List<NextEvolution> nextEvolution;
-  late List<PrevEvolution> prevEvolution;
+  int id;
+  String num;
+  String name;
+  String img;
+  List<String> type;
+  String height;
+  String weight;
+  String candy;
+  int candyCount;
+  String egg;
+  double spawnChance;
+  double avgSpawns;
+  String spawnTime;
+  List<double> multipliers;
+  List<String> weaknesses;
+  List<NextEvolution> nextEvolution;
+  List<PrevEvolution> prevEvolution;
   Pokemon({
-    required this.id,
-    required this.num,
-    required this.name,
-    required this.img,
-    required this.type,
-    required this.height,
-    required this.weight,
-    required this.candy,
-    required this.candyCount,
-    required this.egg,
-    required this.spawnChance,
-    required this.avgSpawns,
-    required this.spawnTime,
-    required this.multipliers,
-    required this.weaknesses,
-    required this.nextEvolution,
-    required this.prevEvolution,
+    this.id,
+    this.num,
+    this.name,
+    this.img,
+    this.type,
+    this.height,
+    this.weight,
+    this.candy,
+    this.candyCount,
+    this.egg,
+    this.spawnChance,
+    this.avgSpawns,
+    this.spawnTime,
+    this.multipliers,
+    this.weaknesses,
+    this.nextEvolution,
+    this.prevEvolution,
   });
 
   Pokemon.fromJson(Map<String, dynamic> json) {
@@ -99,10 +99,10 @@ class Pokemon {
 }
 
 class NextEvolution {
-  late String num;
-  late String name;
+  String num;
+  String name;
 
-  NextEvolution({required this.num, required this.name});
+  NextEvolution({this.num, this.name});
 
   NextEvolution.fromJson(Map<String, dynamic> json) {
     num = json['num'];
@@ -118,10 +118,10 @@ class NextEvolution {
 }
 
 class PrevEvolution {
-  late String num;
-  late String name;
+  String num;
+  String name;
 
-  PrevEvolution({required this.num, required this.name});
+  PrevEvolution({this.num, this.name});
 
   PrevEvolution.fromJson(Map<String, dynamic> json) {
     num = json['num'];

@@ -9,31 +9,31 @@ part of 'pokeapi_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$PokeApiStore on _PokeApiStoreBase, Store {
-  Computed<PokeApi?>? _$pokeAPIComputed;
+  Computed<PokeApi> _$pokeAPIComputed;
 
   @override
-  PokeApi? get pokeAPI =>
-      (_$pokeAPIComputed ??= Computed<PokeApi?>(() => super.pokeAPI,
+  PokeApi get pokeAPI =>
+      (_$pokeAPIComputed ??= Computed<PokeApi>(() => super.pokeAPI,
               name: '_PokeApiStoreBase.pokeAPI'))
           .value;
-  Computed<Pokemon?>? _$pokemonAtualComputed;
+  Computed<Pokemon> _$pokemonAtualComputed;
 
   @override
-  Pokemon? get pokemonAtual =>
-      (_$pokemonAtualComputed ??= Computed<Pokemon?>(() => super.pokemonAtual,
+  Pokemon get pokemonAtual =>
+      (_$pokemonAtualComputed ??= Computed<Pokemon>(() => super.pokemonAtual,
               name: '_PokeApiStoreBase.pokemonAtual'))
           .value;
 
   final _$_pokeApiAtom = Atom(name: '_PokeApiStoreBase._pokeApi');
 
   @override
-  PokeApi? get _pokeApi {
+  PokeApi get _pokeApi {
     _$_pokeApiAtom.reportRead();
     return super._pokeApi;
   }
 
   @override
-  set _pokeApi(PokeApi? value) {
+  set _pokeApi(PokeApi value) {
     _$_pokeApiAtom.reportWrite(value, super._pokeApi, () {
       super._pokeApi = value;
     });
@@ -42,13 +42,13 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   final _$_pokemonAtualAtom = Atom(name: '_PokeApiStoreBase._pokemonAtual');
 
   @override
-  Pokemon? get _pokemonAtual {
+  Pokemon get _pokemonAtual {
     _$_pokemonAtualAtom.reportRead();
     return super._pokemonAtual;
   }
 
   @override
-  set _pokemonAtual(Pokemon? value) {
+  set _pokemonAtual(Pokemon value) {
     _$_pokemonAtualAtom.reportWrite(value, super._pokemonAtual, () {
       super._pokemonAtual = value;
     });
@@ -72,13 +72,13 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   final _$posicaoAtualAtom = Atom(name: '_PokeApiStoreBase.posicaoAtual');
 
   @override
-  int? get posicaoAtual {
+  int get posicaoAtual {
     _$posicaoAtualAtom.reportRead();
     return super.posicaoAtual;
   }
 
   @override
-  set posicaoAtual(int? value) {
+  set posicaoAtual(int value) {
     _$posicaoAtualAtom.reportWrite(value, super.posicaoAtual, () {
       super.posicaoAtual = value;
     });
@@ -99,7 +99,7 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   }
 
   @override
-  dynamic setPokemonAtual({required int index}) {
+  dynamic setPokemonAtual({int index}) {
     final _$actionInfo = _$_PokeApiStoreBaseActionController.startAction(
         name: '_PokeApiStoreBase.setPokemonAtual');
     try {
@@ -110,7 +110,7 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   }
 
   @override
-  Widget getImage({required String numero}) {
+  Widget getImage({String numero}) {
     final _$actionInfo = _$_PokeApiStoreBaseActionController.startAction(
         name: '_PokeApiStoreBase.getImage');
     try {

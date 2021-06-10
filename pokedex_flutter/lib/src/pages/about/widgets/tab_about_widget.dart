@@ -28,13 +28,14 @@ class TabAboutWidget extends StatelessWidget {
               height: 10,
             ),
             Observer(builder: (context) {
-              Specie? _specie = _pokeApiV2Store.specie;
+              Specie _specie = _pokeApiV2Store.specie;
               return SizedBox(
                   height: 70,
                   child: SingleChildScrollView(
+                      // ignore: unnecessary_null_comparison
                       child: _specie != null
                           ? Text(
-                              _specie.flavorTextEntries!
+                              _specie.flavorTextEntries
                                   .where((item) => item.language.name == 'en')
                                   .first
                                   .flavorText,
@@ -74,7 +75,7 @@ class TabAboutWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          _pokeApiStore.pokemonAtual!.height,
+                          _pokeApiStore.pokemonAtual.height,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black,
@@ -97,7 +98,7 @@ class TabAboutWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          _pokeApiStore.pokemonAtual!.weight,
+                          _pokeApiStore.pokemonAtual.weight,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black,
