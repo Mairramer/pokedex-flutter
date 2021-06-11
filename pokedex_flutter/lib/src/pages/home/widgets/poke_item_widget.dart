@@ -69,7 +69,7 @@ class PokeItem extends StatelessWidget {
                     ),
                     opacity: 0.2,
                   ),
-                  tag: name + 'roatation',
+                  tag: name + 'rotation',
                 ),
               ),
               Column(
@@ -117,7 +117,7 @@ class PokeItem extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: [
               ConstsColors.getColorType(type: types[0]).withOpacity(0.7),
-              ConstsColors.getColorType(type: types[0]).withOpacity(0)
+              ConstsColors.getColorType(type: types[0])
             ],
           ),
           borderRadius: BorderRadius.all(

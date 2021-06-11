@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pokedex/src/core/translations/app_translations.dart';
 import 'package:pokedex/src/stores/pokeapi_store.dart';
 
 import 'src/pages/home/home_page.dart';
@@ -15,12 +17,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
+    return GetMaterialApp(
+        title: 'Pokedex',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomePage(),
+        translationsKeys: AppTranslation.translations,
+        locale: Get.deviceLocale);
   }
 }

@@ -13,22 +13,24 @@ class TabEvolutionWidget extends StatelessWidget {
 
   List<Widget> getEvolucao(Pokemon pokemon) {
     List<Widget> _list = [];
-    pokemon.prevEvolution.forEach((f) {
-      _list.add(resizePokemon(_pokeApiStore.getImage(numero: f.num)));
-      _list.add(
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-          child: Text(
-            f.name,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+    if (pokemon.prevEvolution != null) {
+      pokemon.prevEvolution.forEach((f) {
+        _list.add(resizePokemon(_pokeApiStore.getImage(numero: f.num)));
+        _list.add(
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+            child: Text(
+              f.name,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-      );
-      _list.add(Icon(Icons.keyboard_arrow_down));
-    });
+        );
+        _list.add(Icon(Icons.keyboard_arrow_down));
+      });
+    }
     _list.add(resizePokemon(
         _pokeApiStore.getImage(numero: _pokeApiStore.pokemonAtual.num)));
     _list.add(
@@ -44,25 +46,27 @@ class TabEvolutionWidget extends StatelessWidget {
       ),
     );
 
-    _list.add(Icon(Icons.keyboard_arrow_down));
-    pokemon.nextEvolution.forEach((f) {
-      _list.add(resizePokemon(_pokeApiStore.getImage(numero: f.num)));
-      _list.add(
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-          child: Text(
-            f.name,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+    if (pokemon.nextEvolution != null) {
+      _list.add(Icon(Icons.keyboard_arrow_down));
+      pokemon.nextEvolution.forEach((f) {
+        _list.add(resizePokemon(_pokeApiStore.getImage(numero: f.num)));
+        _list.add(
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+            child: Text(
+              f.name,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-      );
-      if (pokemon.nextEvolution.last.name != f.name) {
-        _list.add(Icon(Icons.keyboard_arrow_down));
-      }
-    });
+        );
+        if (pokemon.nextEvolution.last.name != f.name) {
+          _list.add(Icon(Icons.keyboard_arrow_down));
+        }
+      });
+    }
 
     return _list;
   }

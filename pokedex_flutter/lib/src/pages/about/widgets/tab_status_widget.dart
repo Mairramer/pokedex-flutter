@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex/src/models/poke_apiV2_model.dart';
 import 'package:pokedex/src/stores/pokeapiv2_store.dart';
+import 'package:get/get.dart';
 
 class TabStatusWidget extends StatelessWidget {
   final PokeApiV2Store _pokeApiV2Store = GetIt.instance<PokeApiV2Store>();
@@ -52,7 +53,7 @@ class TabStatusWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Velocidade',
+                      'velocidade'.tr,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
                     SizedBox(
@@ -73,14 +74,14 @@ class TabStatusWidget extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Defesa',
+                      'defesa'.tr,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      'Ataque',
+                      'ataque'.tr,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
                     SizedBox(

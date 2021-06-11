@@ -107,7 +107,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                           ? 0.2
                                           : 0.0,
                                     ),
-                                    angle: animation['rotate'],
+                                    angle: animation['rotation'],
                                   );
                                 }),
                             IconButton(
@@ -231,7 +231,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                       : 0,
                                   duration: Duration(milliseconds: 200),
                                 ),
-                                angle: animation['rotate'],
+                                angle: animation['rotation'],
                               );
                             }),
                         IgnorePointer(

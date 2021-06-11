@@ -5,6 +5,7 @@ import 'package:pokedex/src/core/components/circular_progress_about.dart';
 import 'package:pokedex/src/models/species_model.dart';
 import 'package:pokedex/src/stores/pokeapiv2_store.dart';
 import 'package:pokedex/src/stores/pokeapi_store.dart';
+import 'package:get/get.dart';
 
 class TabAboutWidget extends StatelessWidget {
   final PokeApiV2Store _pokeApiV2Store = GetIt.instance<PokeApiV2Store>();
@@ -18,7 +19,7 @@ class TabAboutWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Descrição',
+              'descricao'.tr,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -30,15 +31,18 @@ class TabAboutWidget extends StatelessWidget {
             Observer(builder: (context) {
               Specie _specie = _pokeApiV2Store.specie;
               return SizedBox(
+                  width: double.maxFinite,
                   height: 70,
                   child: SingleChildScrollView(
-                      // ignore: unnecessary_null_comparison
                       child: _specie != null
                           ? Text(
                               _specie.flavorTextEntries
                                   .where((item) => item.language.name == 'en')
                                   .first
-                                  .flavorText,
+                                  .flavorText
+                                  .replaceAll("\n", " ")
+                                  .replaceAll("\f", " ")
+                                  .replaceAll("POKéMON", "Pokémon"),
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -49,7 +53,7 @@ class TabAboutWidget extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Biologia',
+              'biologia'.tr,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -67,7 +71,7 @@ class TabAboutWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Altura',
+                          'altura'.tr,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -90,7 +94,7 @@ class TabAboutWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Peso',
+                          'peso'.tr,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,

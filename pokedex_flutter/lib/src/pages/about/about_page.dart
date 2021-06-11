@@ -7,7 +7,7 @@ import 'package:mobx/mobx.dart';
 import 'package:pokedex/src/pages/about/widgets/tab_evolution_widget.dart';
 import 'package:pokedex/src/pages/about/widgets/tab_status_widget.dart';
 import 'package:pokedex/src/stores/pokeapi_store.dart';
-
+import 'package:get/get.dart';
 import 'widgets/tab_about_widget.dart';
 
 class AboutPage extends StatefulWidget {
@@ -75,10 +75,10 @@ class _AboutPageState extends State<AboutPage>
                   ),
               tabs: <Widget>[
                 Tab(
-                  text: "Sobre",
+                  text: "sobre".tr,
                 ),
                 Tab(
-                  text: "Evolução",
+                  text: "evolucao".tr,
                 ),
                 Tab(
                   text: "Status",
